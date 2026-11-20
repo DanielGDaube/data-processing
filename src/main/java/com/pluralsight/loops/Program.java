@@ -24,11 +24,18 @@ public class Program {
         String searchName = scanner.nextLine();
 
         List<Person> searchPeople = new ArrayList<>();
+        double total = 0;
         for (Person person : peopleList) {
             if (person.getFirstName().equalsIgnoreCase(searchName) || person.getLastName().equalsIgnoreCase(searchName)){
                 searchPeople.add(person);
             }
+            total += person.getAge();
         }
         System.out.println(searchPeople);
+
+        double average = total / peopleList.size();
+        System.out.println(average);
+
+
     }
 }
