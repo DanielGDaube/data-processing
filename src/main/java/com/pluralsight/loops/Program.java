@@ -2,10 +2,12 @@ package com.pluralsight.loops;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args) {
         List<Person> peopleList = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
 
         peopleList.add(new Person("Bobert","Robert",40));
         peopleList.add(new Person("Milton","Jones",23));
@@ -17,5 +19,16 @@ public class Program {
         peopleList.add(new Person("Monica","Havens",26));
         peopleList.add(new Person("Johnny","Peters",58));
         peopleList.add(new Person("Walter", "Kingsley", 102));
+
+        System.out.println("Enter a name to search:");
+        String searchName = scanner.nextLine();
+
+        List<Person> searchPeople = new ArrayList<>();
+        for (Person person : peopleList) {
+            if (person.getFirstName().equalsIgnoreCase(searchName) || person.getLastName().equalsIgnoreCase(searchName)){
+                searchPeople.add(person);
+            }
+        }
+        System.out.println(searchPeople);
     }
 }
