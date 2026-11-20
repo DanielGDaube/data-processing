@@ -24,18 +24,33 @@ public class Program {
         String searchName = scanner.nextLine();
 
         List<Person> searchPeople = new ArrayList<>();
+
         double total = 0;
+
+        Person oldest = peopleList.get(0);
+        Person youngest = peopleList.get(0);
+
         for (Person person : peopleList) {
             if (person.getFirstName().equalsIgnoreCase(searchName) || person.getLastName().equalsIgnoreCase(searchName)){
                 searchPeople.add(person);
             }
             total += person.getAge();
+            if (person.getAge() > oldest.getAge()){
+                oldest = person;
+            } else if (person.getAge() < youngest.getAge()) {
+                youngest = person;
+            }
         }
+        System.out.println("Matching names:");
         System.out.println(searchPeople);
 
         double average = total / peopleList.size();
+        System.out.println("Average age:");
         System.out.println(average);
 
-
+        System.out.println("Highest age:");
+        System.out.println(oldest.getAge());
+        System.out.println("Lowest age:");
+        System.out.println(youngest.getAge());
     }
 }
